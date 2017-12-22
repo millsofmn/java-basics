@@ -1,5 +1,7 @@
 package com.millsofmn.javabasics.string;
 
+import java.text.MessageFormat;
+
 /**
  * Created by m108491 on 6/14/2016.
  */
@@ -9,6 +11,7 @@ public class StringBasics {
         concatenation();
         concatenationStringAndInt();
         compare();
+        stringFormat();
     }
 
     private static void concatenation() {
@@ -55,5 +58,22 @@ public class StringBasics {
 
     }
 
+    private static void stringFormat(){
+        String message = "This is my message with value {0}";
+        String value = "Value";
 
+        String newString = MessageFormat.format(message, value);
+        System.out.println(newString);
+
+        String message2 = "This is my message with value {0}";
+
+        String newString2 = MessageFormat.format(message2, null);
+        System.out.println(newString2);
+
+        String message3 = "This is my message with value";
+        String value3 = "Value";
+
+        String newString3 = MessageFormat.format(message3, value3);
+        System.out.println(newString3);
+    }
 }

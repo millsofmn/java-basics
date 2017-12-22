@@ -17,9 +17,9 @@ public class CheckPalindrome {
 
         for(String key : testStrings.keySet()){
             if(checkPalindrome(key) == testStrings.get(key)){
-                System.out.println(key + " is identified as correct");
+                System.out.println(key + " is identified correctly");
             } else {
-                System.out.println(key + " is identified as error");
+                System.out.println(key + " is identified as an error");
             }
         }
     }
