@@ -1,4 +1,4 @@
-package com.millsofmn.javabasics.codefight;
+package com.millsofmn.javabasics.codefight.arcade;
 
 import java.util.HashMap;
 import java.util.Map;
