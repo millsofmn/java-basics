@@ -59,21 +59,30 @@ public class StringBasics {
     }
 
     private static void stringFormat(){
-        String message = "This is my message with value {0}";
+        String message = "1 This is my message with value {0}";
         String value = "Value";
 
         String newString = MessageFormat.format(message, value);
         System.out.println(newString);
 
-        String message2 = "This is my message with value {0}";
+        String message2 = "2 This is my message with value {0}";
 
         String newString2 = MessageFormat.format(message2, null);
         System.out.println(newString2);
 
-        String message3 = "This is my message with value";
+        String message3 = "3 This is my message with value";
         String value3 = "Value";
 
         String newString3 = MessageFormat.format(message3, value3);
         System.out.println(newString3);
+
+        String message4 = "4 This is my message with value {0}, {1}";
+        String value4 = "Value1";
+        String value41 = "Value2";
+
+        String newString4 = MessageFormat.format(message3, value4, value41);
+        System.out.println(newString4);
+
+
     }
 }
