@@ -8,9 +8,10 @@ import java.text.MessageFormat;
 public class StringBasics {
 
     public static void main(String[] args){
-        concatenation();
-        concatenationStringAndInt();
-        compare();
+//        concatenation();
+//        concatenationStringAndInt();
+//        compare();
+//        stringMessageFormat();
         stringFormat();
     }
 
@@ -58,7 +59,7 @@ public class StringBasics {
 
     }
 
-    private static void stringFormat(){
+    private static void stringMessageFormat(){
         String message = "1 This is my message with value {0}";
         String value = "Value";
 
@@ -84,5 +85,18 @@ public class StringBasics {
         System.out.println(newString4);
 
 
+    }
+
+    private static void stringFormat(){
+        String message = String.format("My String %s", "123");
+        System.out.println(message);
+
+        String CONJUGATOR = "&&";
+        String msg = String.format("Cannot use '%s' in panel or sample class.", CONJUGATOR);
+//        System.out.println(msg);
+
+        if ("MNDP&&NGS22".contains(CONJUGATOR)) {
+            System.out.println(msg);
+        }
     }
 }
