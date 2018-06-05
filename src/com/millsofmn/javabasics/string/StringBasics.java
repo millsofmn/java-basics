@@ -12,7 +12,8 @@ public class StringBasics {
 //        concatenationStringAndInt();
 //        compare();
 //        stringMessageFormat();
-        stringFormat();
+//        stringFormat();
+        substring();
     }
 
     private static void concatenation() {
@@ -98,5 +99,14 @@ public class StringBasics {
         if ("MNDP&&NGS22".contains(CONJUGATOR)) {
             System.out.println(msg);
         }
+    }
+
+    private static void substring(){
+        String remoteFile = "/dlmp/prod/testDefinition/NMPAN-NGS22/pipelines/cnv/reporting.bed";
+        String fileName = remoteFile.substring(remoteFile.lastIndexOf("/")+1, remoteFile.length());
+        System.out.println(fileName);
+
+        String hyphenName = remoteFile.replace("/", "-");
+        System.out.println(hyphenName);
     }
 }
