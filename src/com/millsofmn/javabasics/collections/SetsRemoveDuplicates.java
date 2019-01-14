@@ -10,38 +10,36 @@ public class SetsRemoveDuplicates {
         set1.add("user1");
         set1.add("user2");
         set1.add("user3");
-        set1.add("user4");
-        set1.add("user5");
 
         print("Set 1 Before", set1);
 
         // define set 2
         Set<String> set2 = new HashSet<String>();
+        set2.add("user3");
+        set2.add("user4");
         set2.add("user5");
-        set2.add("user6");
-        set2.add("user7");
-        set2.add("user8");
-        set2.add("user9");
 
         print("Set 2 Before", set2);
 
-        // define set 3 and add the duplicates
-        Set<String> set3 = new HashSet<>(set1);
-        set3.retainAll(set2);
-
-        print("Set 3 Retain All", set3);
-
-        // remove the duplicates from set 2
-        set2.removeAll(set3);
-        print("Set 1 After", set1);
-        print("Set 2 After", set2);
+        set1.removeAll(set2);
+        print("Set", set1);
+//        // define set 3 and add the duplicates
+//        Set<String> set3 = new HashSet<>(set1);
+//        set3.retainAll(set2);
+//
+//        print("Set 3 Retain All", set3);
+//
+//        // remove the duplicates from set 2
+//        set2.removeAll(set3);
+//        print("Set 1 After", set1);
+//        print("Set 2 After", set2);
 
     }
 
     public static void print(String setName, Set<String> set){
         System.out.println("== " + setName + " ==");
         for (String s : set) {
-            System.out.println(s);
+            System.out.print(s + ", ");
         }
         System.out.println();
     }
