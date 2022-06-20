@@ -1,4 +1,4 @@
-package com.millsofmn.codility;
+package com.millsofmn.codility.iterations;
 
 import java.util.HashMap;
 import java.util.Map;

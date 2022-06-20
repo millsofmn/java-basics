@@ -1,4 +1,4 @@
-package com.millsofmn.codility;
+package com.millsofmn.codility.arrays;
 
 import java.util.Arrays;
 import java.util.HashSet;
