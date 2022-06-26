@@ -60,25 +60,30 @@ public class TapeEquilibrium {
      * Udemy Solution
      */
     public int solution(int[] A) {
-        int leftSum = A[0];
-        int rightSum = 0;
-
-        for (int x : A) rightSum += x;
-
-        rightSum -= leftSum;
-
-        int diff = Math.abs(leftSum - rightSum);
-
-        for (int i = 1; i < A.length - 1; i++) {
-            leftSum += A[i];
-            rightSum -= A[i];
-            int currentDiff = Math.abs(leftSum - rightSum);
-
-            if (diff > currentDiff)
-                diff = currentDiff;
+        long totalSum = 0;
+        for (int i : A) {
+            totalSum += i;
         }
 
-        return diff;
+        long rightSum = totalSum;
+        long leftSum = 0;
+
+        long[] sumArray = new long[A.length];
+
+        for (int y = 0; y < A.length; y++) {
+            rightSum -= A[y];
+            leftSum += A[y];
+
+            sumArray[y] = Math.abs(leftSum - rightSum);
+        }
+
+        long lowestValue = Integer.MAX_VALUE;
+        for (long x : sumArray) {
+            if (x < lowestValue)
+                lowestValue = x;
+        }
+
+        return (int) lowestValue;
     }
 
     /**

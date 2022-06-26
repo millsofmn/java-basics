@@ -65,21 +65,40 @@ import java.util.HashSet;
 public class FrogRiverOne {
 
     /**
+     * Codility Solution
+     */
+    public int solution(int X, int[] A) {
+        boolean[] riverPositions = new boolean[X + 1];
+
+        for(int time = 0; time < A.length; time++){
+            int pos = A[time];
+
+            if(!riverPositions[pos]){
+                riverPositions[pos] = true;
+                X -= 1;
+
+                if(X == 0) return time;
+            }
+        }
+        return -1;
+    }
+
+    /**
      * Borrowed a hint/code from stack overflow
      * https://app.codility.com/demo/results/trainingRBR2WN-C8R/
      */
-    public int solution(int X, int[]A){
+    public int solution2(int X, int[] A) {
         // how many hops are needed to cross?
         int hop = X;
 
         // initialize path across
-        boolean[] path = new boolean[X+1];
+        boolean[] path = new boolean[X + 1];
 
         // loop through time array filling in path
-        for(int i = 0; i < A.length; i++){
+        for (int i = 0; i < A.length; i++) {
 
             // check if the leaf has already fallen there
-            if(!path[A[i]]){
+            if (!path[A[i]]) {
 
                 // nope, fill in the location
                 path[A[i]] = true;
@@ -88,7 +107,7 @@ public class FrogRiverOne {
                 hop--;
 
                 // if path is filled in return index from array when it happened
-                if(hop == 0)
+                if (hop == 0)
                     return i;
             }
         }
@@ -100,13 +119,13 @@ public class FrogRiverOne {
      * Correctness 100%, Performance 0%
      * https://app.codility.com/demo/results/trainingP8TPYV-DWE/
      */
-    public int solution1(int X, int[]A){
+    public int solution1(int X, int[] A) {
         HashMap<Integer, Integer> path = new HashMap<>();
         path.put(0, 1); // shore
 
-        for(int i = 0; i < A.length; i++){
+        for (int i = 0; i < A.length; i++) {
             // add new leaf on path
-            if(!path.containsKey(A[i]))
+            if (!path.containsKey(A[i]))
                 path.put(A[i], 0);
 
             int leavesAtSpot = path.get(A[i]);
@@ -114,11 +133,11 @@ public class FrogRiverOne {
             path.put(A[i], leavesAtSpot += 1);
 
             // can frog cross now?
-            for(int y = 0; y <= A.length; y++){
-                if(!path.containsKey(y))
+            for (int y = 0; y <= A.length; y++) {
+                if (!path.containsKey(y))
                     break;
 
-                if(y == X)
+                if (y == X)
                     return i;
             }
         }
