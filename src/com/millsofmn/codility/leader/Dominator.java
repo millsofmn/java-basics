@@ -42,6 +42,7 @@ public class Dominator {
 
     public static void main(String[] args) {
         System.out.println("0, 2, 4, 6, 7 => " + new Dominator().solutions(new int[]{3, 4, 3, 2, 3, -1, 3, 3}));
+        System.out.println("-1 => " + new Dominator().solutions(new int[]{1, 2, 3, 4, 5, 6, 7}));
     }
 
     /**
