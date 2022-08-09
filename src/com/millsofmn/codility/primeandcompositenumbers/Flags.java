@@ -1,5 +1,7 @@
 package com.millsofmn.codility.primeandcompositenumbers;
 
+import java.util.Arrays;
+
 /**
  * A non-empty array A consisting of N integers is given.
  * <p>
@@ -73,60 +75,45 @@ package com.millsofmn.codility.primeandcompositenumbers;
 public class Flags {
 
     public static void main(String[] args) {
-        System.out.println("3 => " + new Flags().solution(new int[]{1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2}));
-        System.out.println("3 => " + new Flags().solution(new int[]{5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2}));
-        System.out.println("0 => " + new Flags().solution(new int[]{1, 1, 1, 1, 1, 1, 1}));
-        System.out.println("0 => " + new Flags().solution(new int[]{5, 4, 3, 2, 1, 0}));
+        System.out.println("3 => " + new Flags().solution(new int[]{1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2})); // 4 peaks
     }
 
+    /**
+     * Udemy Solution
+     */
     public int solution(int[] A) {
+        int[] peaks = new int[A.length];
+        int nextPeak = A.length;
 
-        return -1;
+        peaks[A.length -1] = nextPeak;
+
+        for(int i = A.length -2; i > 0; i--){
+            if(A[i-1]< A[i] && A[i+1] < A[i])
+                nextPeak = i;
+
+            peaks[i] = nextPeak;
+
+        }
+        peaks[0] = nextPeak;
+
+        int currentGuess = 0;
+        int nextGuess = 0;
+
+        while(canPlaceFlags(peaks, nextGuess)){
+            currentGuess = nextGuess;
+            nextGuess++;
+        }
+
+        return currentGuess;
     }
 
-    public int solution1(int[] A) {
-
-        int peaks = 0;
-
-        int previousElevation = 0;
-        int currentElevation = 0;
-        int nextElevation = 0;
-
-        System.out.print("Peaks=[");
-        // determine how many peaks
-        for (int i = 1; i < A.length - 1; i++) {
-            previousElevation = A[i - 1];
-            currentElevation = A[i];
-            nextElevation = A[i + 1];
-
-            if (previousElevation < currentElevation && currentElevation > nextElevation) {
-                System.out.print("A[" + i + "]=" + A[i] + " ");
-                peaks++;
-            }
-
+    private boolean canPlaceFlags(int[] peaks, int flagsToPlace){
+        int currentPosition =1 - flagsToPlace;
+        for(int i = 0; i<flagsToPlace; i++){
+            if(currentPosition + flagsToPlace > peaks.length -1)
+                return false;
+            currentPosition = peaks[currentPosition+flagsToPlace];
         }
-        System.out.println("] = " + peaks);
-
-        int actuallySet = 0;
-        previousElevation = 0;
-
-        // A.length * A.length
-        for (int x = 1; x < A.length - 1; x++) {
-            previousElevation = A[x - 1];
-            currentElevation = A[x];
-            nextElevation = A[x + 1];
-
-            if (previousElevation < currentElevation && currentElevation > nextElevation) {
-                System.out.print("A[" + x + "]=" + A[x] + " ");
-                actuallySet++;
-                x += peaks - 1;
-
-                if (x < A.length) previousElevation = A[x];
-            }
-
-
-        }
-        System.out.println(" flags = " + actuallySet);
-        return actuallySet;
+        return currentPosition < peaks.length;
     }
 }
