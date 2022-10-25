@@ -4,11 +4,11 @@ class Task2 implements Runnable{
 
     @Override
     public void run() {
-        System.out.print("\nTask2 Started");
+        System.out.print("\nAlabetical Started");
 
         for(int i = 201; i <= 299; i++)
             System.out.print(i + " ");
 
-        System.out.print("\nTask2 Done");
+        System.out.print("\nAlabetical Done");
     }
 }
